@@ -1,5 +1,6 @@
 import htmlgen, jester, json
-import bindTypes/apiType
+import std/times
+from ../bindTypes/apiType import CaffeineData
 
 proc router*() = 
   settings:
