@@ -1,9 +1,5 @@
 import htmlgen, jester, json
-import std/times
-
-type CaffeineData* = object
-  startDate: DateTime
-  endDate: DateTime
+import bindTypes/apiType
 
 proc router*() = 
   settings:
