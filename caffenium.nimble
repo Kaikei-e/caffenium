@@ -11,3 +11,4 @@ bin           = @["caffenium"]
 # Dependencies
 
 requires "nim >= 1.6.6"
+requires "jester >= 0.5.0"
