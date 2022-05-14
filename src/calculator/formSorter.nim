@@ -1,4 +1,4 @@
-import std/times, json, sequtils
+import std/times, json, algorithm
 import ../bindTypes/apiType
 
 # type
@@ -21,15 +21,16 @@ proc formSorter*(jsonString: JsonNode) =
   var multiData = newSeq[FormData]()
 
   for item in jsonArray.items:
-    debugEcho item
-
     let sDate = item["start_date"].getStr
     let eDate = item["end_date"].getStr
 
-    let parsedSDate = parse(sDate, "yyyy-MM-dd HH:mm:ss")
-    let parsedEDate = parse(eDate, "yyyy-MM-dd HH:mm:ss")
+    let date1 = parse(sDate, "yyyy-MM-dd HH:mm:ss")
+    let date2 = parse(eDate, "yyyy-MM-dd HH:mm:ss")
 
-    let singleData = FormData(startDate: parsedSDate, endDate: parsedEDate)
+    var dates = @[date1, date2]
+    sort(dates)
+
+    let singleData = FormData(startDate: dates[0], endDate: dates[1])
     
     multiData.add(singleData)
 
