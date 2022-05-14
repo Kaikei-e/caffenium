@@ -19,11 +19,18 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
   var toMax = 1.0
   var dateAt = sinlgeFormData.startDate
 
+
   var count = 0
-  while toMax < 10 * totalCaffeine :
+
+  while toMax < totalCaffeine + 1.0:
+    if count div 100 == 0:
+      echo "calculating"
+
+    count += 1
+
     var caffeStruct : TheDecay
 
-    if count == 0 :
+    if count == 1 :
       caffeStruct.caffeineTransition = toMax
       caffeStruct.timeline = dateAt
 
@@ -31,7 +38,6 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
 
       continue
 
-    count += 1
 
     toMax = toMax * Tmax
     dateAt = dateAt + initDuration(minutes = 1)
@@ -46,13 +52,13 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
 
     decayData.add(caffeStruct)
 
+  echo "calc1 was end"
+
   let decayRate = 0.99807
 
   var toZero = totalCaffeine
 
   dateAt = decayData[len(decayData) - 1].timeline
-
-  var count2 = 0
 
   while toZero > 5.00000:
     var caffeDecay: TheDecay
@@ -64,6 +70,9 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
     caffeDecay.caffeineTransition = toZero
 
     decayData.add(caffeDecay)
+
+  echo "calc2 was end"
+
 
   decayData
 #
