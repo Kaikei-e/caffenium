@@ -1,16 +1,16 @@
 import ../bindTypes/apiType
 import ../bindTypes/caffeStructs
 
-proc multipleCalc*(formDatas: seq[FormData]()): seq[TheDecay] =
+proc multipleCalc*(formDatas: seq[FormData]): seq[TheDecay] =
   result = newSeq[TheDecay]()
-  let decayData: newSeq TheDecay
+  var decayData = newSeq[TheDecay]()
 
   for item in formDatas:
     decayData = coreCalculator(item)
 
   result = decayData
 
-proc coreCalculator*(singleFormData: FormData): seq[TheDecay] =
+proc coreCalculator(singleFormData: FormData): seq[TheDecay] =
   result: newSeq[TheDecay]()
 
   var totalCaffeine: float64
