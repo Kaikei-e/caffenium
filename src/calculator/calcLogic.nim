@@ -6,8 +6,11 @@ import coreCalculator
 proc decayCalculator*(caffeData: JsonNode): seq[FormData] =
 
   let sortedData = formSorter(caffeData)
-  debugEcho sortedData
 
-  multipleCalc(sortedData)
+  for item in sortedData:
+    coreCalculator(item)
+
+    echo item
+
 
   sortedData
