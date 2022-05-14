@@ -1,10 +1,19 @@
 import ../bindTypes/apiType
 import ../bindTypes/caffeStructs
 
-proc coreCalculator*(sinlgeFormData: FormData): TheDecays =
-  result: TheDecays
+proc multipleCalc*(formDatas: seq[FormData]()): seq[TheDecay] =
+  result = newSeq[TheDecay]()
+  let decayData: newSeq TheDecay
 
-  var totalCaffeine : float64
+  for item in formDatas:
+    decayData = coreCalculator(item)
+
+  result = decayData
+
+proc coreCalculator*(singleFormData: FormData): seq[TheDecay] =
+  result: newSeq[TheDecay]()
+
+  var totalCaffeine: float64
 
   if sinlgeFormData.method1or2 == 2 :
     totalCaffeine = sinlgeFormData.caffeineMg * sinlgeFormData.drinkAmountMl / 100
@@ -32,7 +41,7 @@ proc coreCalculator*(sinlgeFormData: FormData): TheDecays =
     toTmax = toTmax * Tmax
     dateAt = dateAt + initDuration(minutes = 1)
 
-    if toTmax > totalCaffeine :
+    if toTmax > totalCaffeine:
       caffeStruct.caffeineTransition = totalCaffeine
       caffeStruct.timeline = dateAt
       break

@@ -6,7 +6,6 @@ proc formSorter*(jsonString: JsonNode) : seq[FormData] =
   let jsonArray = %* jsonString 
 
   echo jsonArray
-  # var multiData = newSeq[FormData]()
 
   for item in jsonArray.items:
     let sDate = item["start_date"].getStr
