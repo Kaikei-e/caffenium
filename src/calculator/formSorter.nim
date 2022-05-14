@@ -12,10 +12,11 @@ proc formSorter*(jsonString: JsonNode) : seq[FormData] =
     let sDate = item["start_date"].getStr
     let caffeine = item["caffeine_mg"].getInt
     let method1or2 = item["which_method"].getInt
+    let drinkAmountMl = item["drink_amount_ml"].getInt
 
     let dateStarted = parse(sDate, "yyyy-MM-dd HH:mm:ss")
 
-    let singleData = FormData(startDate: dateStarted, caffeineMg: caffeine, method1or2: method1or2)
+    let singleData = FormData(startDate: dateStarted, caffeineMg: caffeine, method1or2: method1or2, drinkAmountMl: drinkAmountMl)
     
     result.add(singleData)
 
