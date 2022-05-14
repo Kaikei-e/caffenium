@@ -19,9 +19,9 @@ proc formSorter*(jsonString: JsonNode) =
 
   echo jsonArray
   for item in jsonArray.items:
-    echo item
-    # let singleData = to(item, FormData)
-    
+    debugEcho item
+    var singleData = to(item, FormData)
+    echo singleData
 
   
     
