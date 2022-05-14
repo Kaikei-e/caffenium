@@ -1,5 +1,5 @@
 import std/times
 
-type CaffeineData* = object
+type FormData* = object
   startDate*: DateTime
   endDate*: DateTime

@@ -32,6 +32,8 @@ proc router*() =
 
         echo caffeData
         let response = %*{"time_formatted": getDateStr(caffeData.startDate)}
+        
+
         resp response
 
       except Exception:
