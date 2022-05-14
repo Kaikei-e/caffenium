@@ -1,5 +1,6 @@
 import ../bindTypes/apiType
 import ../bindTypes/caffeStructs
+import times
 
 
 proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
@@ -10,9 +11,9 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
   var totalCaffeine: float64
 
   if sinlgeFormData.method1or2 == 2 :
-    totalCaffeine = float64(sinlgeFormData.caffeineMg) * sinlgeFormData.drinkAmountMl / 100
+    totalCaffeine = float64(sinlgeFormData.caffeineMg) * float64(sinlgeFormData.drinkAmountMl) / 100.0
   else:
-    totalCaffeine = sinlgeFormData.caffeineMg
+    totalCaffeine = float64(sinlgeFormData.caffeineMg)
 
   let Tmax = 1.1333
   var toMax = 1.0
@@ -32,10 +33,10 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
 
     count += 1
 
-    toTmax = toTmax * Tmax
+    toMax = toMax * Tmax
     dateAt = dateAt + initDuration(minutes = 1)
 
-    if toTmax > totalCaffeine:
+    if toMax > totalCaffeine:
       caffeStruct.caffeineTransition = totalCaffeine
       caffeStruct.timeline = dateAt
       break
@@ -48,7 +49,8 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
   let decayRate = 0.99807
 
   var toZero = totalCaffeine
-  dateAt = result[len(caffeStructs) - 1].timeline
+
+  dateAt = decayData[len(decayData) - 1].timeline
 
   var count2 = 0
 
