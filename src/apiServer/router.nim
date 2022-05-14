@@ -1,7 +1,5 @@
 import htmlgen, jester, json
-import std/times
-from ../bindTypes/apiType import FormData
-from ../calculator/formSorter import formSorter
+from ../calculator/calcLogic import decayCalculator
 
 proc router*() = 
   settings:
@@ -24,7 +22,7 @@ proc router*() =
       try:
         let params = request.body.parseJson
         
-        formSorter(params)
+        decayCalculator(params)
 
         let response = %*{"time_formatted": "getDateStr(caffeData.startDate)"}
 
