@@ -1,11 +1,12 @@
 import std/times, json, algorithm
 import ../bindTypes/apiType
 
-proc formSorter*(jsonString: JsonNode) =
+proc formSorter*(jsonString: JsonNode) : seq[FormData] =
+  result = newSeq[FormData]()
   let jsonArray = %* jsonString 
 
   echo jsonArray
-  var multiData = newSeq[FormData]()
+  # var multiData = newSeq[FormData]()
 
   for item in jsonArray.items:
     let sDate = item["start_date"].getStr
@@ -16,14 +17,16 @@ proc formSorter*(jsonString: JsonNode) =
 
     let singleData = FormData(startDate: dateStarted, caffeineMg: caffeine, method1or2: method1or2)
     
-    multiData.add(singleData)
+    result.add(singleData)
 
-    echo multiData
+    # echo multiData
 
   proc dateCmp(x, y: FormData): int =
     cmp(x.startDate, y.startDate)
 
-  multiData.sort(dateCmp)
+  result.sort(dateCmp)
 
-  echo multiData
+  # echo multiData
+
+
   
