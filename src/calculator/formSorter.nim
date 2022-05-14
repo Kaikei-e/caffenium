@@ -1,4 +1,4 @@
-import std/marshal, json
+import std/times, json
 import ../bindTypes/apiType
 
 # type
@@ -20,8 +20,14 @@ proc formSorter*(jsonString: JsonNode) =
   echo jsonArray
   for item in jsonArray.items:
     debugEcho item
-    var singleData = to(item, FormData)
+
+    let sDate = item["start_date"].getStr
+    let eDate = item["end_date"].getStr
+
+    let parsedSDate = parse(sDate, "yyyy-MM-dd HH:mm:ss")
+    let parsedEDate = parse(eDate, "yyyy-MM-dd HH:mm:ss")
+
+    let singleData = FormData(startDate: parsedSDate, endDate: parsedEDate)
     echo singleData
 
-  
-    
+
