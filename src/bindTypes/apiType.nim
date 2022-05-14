@@ -2,4 +2,5 @@ import std/times
 
 type FormData* = object
   startDate*: DateTime
-  endDate*: DateTime
+  caffeineMg*: int
+  method1or2*: int

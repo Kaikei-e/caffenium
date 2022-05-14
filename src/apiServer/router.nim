@@ -23,17 +23,10 @@ proc router*() =
     post "/api/v1/calculate":
       try:
         let params = request.body.parseJson
-        let sDate = params[0]["start_date"].getStr
-        let eDate = params[1]["end_date"].getStr
-
-        let parsedSDate = parse(sDate, "yyyy-MM-dd HH:mm:ss")
-        let parsedEDate = parse(eDate, "yyyy-MM-dd HH:mm:ss")
-
-        let caffeData = FormData(startDate: parsedSDate, endDate: parsedEDate)
-
+        
         formSorter(params)
 
-        let response = %*{"time_formatted": getDateStr(caffeData.startDate)}
+        let response = %*{"time_formatted": "getDateStr(caffeData.startDate)"}
 
         resp response
 
