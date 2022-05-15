@@ -10,7 +10,7 @@ proc decayCalculator*(caffeData: JsonNode): seq[TheDecay] =
   let sortedData = formSorter(caffeData)
 
   for item in sortedData:
-    let decayData = coreCalculator(item)
+    decayData = coreCalculator(item)
 
     echo item
 
