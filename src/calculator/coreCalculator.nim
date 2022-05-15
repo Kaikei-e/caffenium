@@ -23,9 +23,6 @@ proc coreCalculator*(sinlgeFormData: FormData): seq[TheDecay] =
   var count = 0
 
   while toMax < totalCaffeine + 1.0:
-    if count div 100 == 0:
-      echo "calculating"
-
     count += 1
 
     var caffeStruct : TheDecay
