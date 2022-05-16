@@ -1,9 +1,12 @@
 import std/tables
+import times
 import ../bindTypes/caffeStructs
 
-proc makeDecaySumList(decays: seq[TheDecay]): seq[TheDecay] =
+proc makeDecaySumList*(decays: seq[TheDecay]): seq[TheDecay] =
 
-  var summedResult = toTable()
+  var summedResult = initTable[DateTime, float64]()
 
   for item in decays:
-    echo decays
+    echo item
+
+  decays
