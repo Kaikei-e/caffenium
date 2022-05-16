@@ -7,6 +7,7 @@ proc makeDecaySumList*(decays: seq[TheDecay]): seq[TheDecay] =
   var summedResult = initTable[DateTime, float64]()
 
   for item in decays:
-    echo item
+    echo item.timeline
+    # summedResult[item.timeline] = item.caffeineTransition
 
   decays
