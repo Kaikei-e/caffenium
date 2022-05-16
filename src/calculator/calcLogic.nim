@@ -6,7 +6,7 @@ import ../bindTypes/caffeStructs
 import coreCalculator
 import sumDecayList
 
-proc decayCalculator*(caffeData: JsonNode): seq[TheDecay] =
+proc decayCalculator*(caffeData: JsonNode): Table[DateTime, float64] =
   var decayData: seq[TheDecay]
   var summedResult = initTable[DateTime, float64]()
 
@@ -19,9 +19,10 @@ proc decayCalculator*(caffeData: JsonNode): seq[TheDecay] =
 
     # echo item
 
-  
+
 
   let dd = makeDecaySumList(decayData)
   #echo dd
 
-  decayData
+  dd
+  # decayData

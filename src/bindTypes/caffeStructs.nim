@@ -6,3 +6,7 @@ type TheDecay* = object
 
 type TheDecays* = object
   theDecays* : seq[TheDecay]
+
+type CaledDecay* = object
+  timeline* : Time
+  caffeineDecay* : float64
