@@ -8,8 +8,9 @@ proc makeDecaySumList*(decays: seq[TheDecay]): Table[DateTime, float64] =
 
   for item in decays:
     # echo item.timeline
-    let tTmp = item.timeline
-    summedResult[tTmp] = item.caffeineTransition
+    echo typeof(item.timeline)
+
+    summedResult[item.timeline] = item.caffeineTransition
 
   summedResult
   # decays

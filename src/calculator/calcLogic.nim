@@ -19,8 +19,6 @@ proc decayCalculator*(caffeData: JsonNode): Table[DateTime, float64] =
 
     # echo item
 
-
-
   let dd = makeDecaySumList(decayData)
   #echo dd
 
